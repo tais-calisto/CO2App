@@ -25,7 +25,7 @@ const Home: NextPage = () => {
           <Link href={'/calculate'}>
             <button className='btnPrimary'>Calcular</button>
           </Link>
-          <Link href={'/calculate'}>
+          <Link href={'/info'}>
             <button className='btnSecundary'>Saiba mais</button>
           </Link>
         </div>
