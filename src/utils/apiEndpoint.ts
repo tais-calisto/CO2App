@@ -1,2 +1,1 @@
-export const defaultEndpoint =
-  'https://www.carboninterface.com/api/v1/estimates'
+export const defaultEndpoint = 'https://beta3.api.climatiq.io/estimate'
