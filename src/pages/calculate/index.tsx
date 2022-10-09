@@ -14,12 +14,29 @@ const Calculate: NextPage = () => {
     setActivity(selection.current?.value)
   }
 
+  const handleSubmit = async () => {
+    try {
+      const response = await fetch('http://localhost:3000/api/estimates', {
+        method: 'GET',
+      })
+      const data = await response.json()
+      console.log(data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <CalculateStyle>
       <div>
         <Header />
         <h1>Cálculo de emissões de carbono</h1>
-        <form>
+        <form
+          onSubmit={(event) => {
+            event.preventDefault()
+            handleSubmit()
+          }}
+        >
           <label htmlFor='activity'>Atividade:</label>
           <select
             id='activity'
