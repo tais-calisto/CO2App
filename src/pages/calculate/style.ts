@@ -16,15 +16,22 @@ export const CalculateStyle = styled.main`
     display: flex;
     flex-direction: column;
     label {
-      padding-bottom: 0.5rem;
+      padding: 0.5rem 0 0 0;
     }
-    select {
+    input {
+      margin-bottom: 0.5rem;
+    }
+    select,
+    input {
       border: 2px solid ${({ theme }) => theme.colors.gray3};
       border-radius: 8px;
-      width: 60%;
+      width: 90%;
+      padding: 0.3rem;
       background-color: ${({ theme }) => theme.colors.primary2};
       color: ${({ theme }) => theme.colors.gray3};
-      padding: 0.5rem;
+    }
+    button {
+      width: fit-content;
     }
   }
 `

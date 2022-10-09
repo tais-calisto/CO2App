@@ -130,7 +130,7 @@ const Calculate: NextPage = () => {
               <p>Vehicle makes request</p>
             </>
           ) : null}
-          <button>Calcular</button>
+          {activity && <button className='btnPrimary'>Calcular</button>}
         </form>
       </div>
       <Image src={photo} />
