@@ -19,9 +19,4 @@ export const options = [
     value: 'vehicle',
     name: 'Carro',
   },
-  {
-    id: 678,
-    value: 'fuel_combustion',
-    name: 'Combustão',
-  },
 ]
