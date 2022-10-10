@@ -19,7 +19,8 @@ export const CalculateStyle = styled.main`
       padding: 0.5rem 0 0 0;
     }
     input,
-    #method {
+    #method,
+    a {
       margin-bottom: 0.5rem;
     }
     select,

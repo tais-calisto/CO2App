@@ -49,12 +49,23 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
 
-input[type=number] {
+  input[type=number] {
   -moz-appearance: textfield;
-}
+  }
+
+  a{
+    font-size: 0.8rem;
+    color: ${({ theme }) => theme.colors.gray2};
+    text-decoration: underline;
+    transition: all 0.3s ease-in-out;
+    &:hover{
+      color: ${({ theme }) => theme.colors.gray3};
+
+    }
+  }
 `

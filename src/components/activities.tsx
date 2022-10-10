@@ -57,26 +57,38 @@ export const Flight = () => {
         ref={passValue}
         onChange={handleChange}
       />
-      <label htmlFor='departure_airport'>Aeroporto de saída:</label>
+
+      <label htmlFor='departure_airport'>
+        Aeroporto de saída: {'(código do aeroporto )'}
+      </label>
       <input
         type='text'
         id='departure_airport'
         ref={depAir}
         onChange={handleChange}
       />
-      <label htmlFor='destination_airport'>Aeroporto de chegada:</label>
+      <label htmlFor='destination_airport'>
+        Aeroporto de chegada: {'(código do aeroporto )'}
+      </label>
       <input
         type='text'
         id='destination_airport'
         ref={desAir}
         onChange={handleChange}
       />
+      <a
+        href='https://www.iata.org/en/publications/directories/code-search/'
+        target='_blank'
+        rel='noopener noreferrer'
+      >
+        Pesquisar códigos de aeroportos
+      </a>
     </>
   )
 }
 
 export const Shipping = () => {
-  const { shippingInfo, setShippingInfo } = useGlobalContext()
+  const { setShippingInfo } = useGlobalContext()
 
   const weightRef = useRef<HTMLInputElement | null>(null)
   const distanceRef = useRef<HTMLInputElement | null>(null)
