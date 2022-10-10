@@ -5,28 +5,27 @@ import Image from 'next/image'
 import { CalculateStyle } from './style'
 import { options } from '@/utils/estimationOptions'
 import { useRef, useState } from 'react'
+import { Electricity, Flight, Shipping, Vehicle } from '@/components/activities'
+import { useGlobalContext } from '@/context/AppContext'
 
 const Calculate: NextPage = () => {
   const selection = useRef<null | HTMLSelectElement>(null)
   const [activity, setActivity] = useState<string | undefined>('')
 
+  const { eletricityValue } = useGlobalContext()
+
   const handleChange = () => {
     setActivity(selection.current?.value)
   }
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (info: object) => {
     try {
       const response = await fetch('http://localhost:3000/api/estimates', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          type: 'vehicle',
-          distance_unit: 'mi',
-          distance_value: 100,
-          vehicle_model_id: '7268a9b7-17e8-4c8d-acca-57059252afe9',
-        }),
+        body: JSON.stringify(info),
       })
       const data = await response.json()
       console.log(data)
@@ -43,7 +42,19 @@ const Calculate: NextPage = () => {
         <form
           onSubmit={(event) => {
             event.preventDefault()
-            handleSubmit()
+            switch (activity) {
+              case 'electricity':
+                handleSubmit({
+                  type: 'electricity',
+                  electricity_unit: 'kwh',
+                  electricity_value: eletricityValue,
+                  country: 'us',
+                })
+                break
+              case 'flight':
+                handleSubmit({})
+                break
+            }
           }}
         >
           <label htmlFor='activity'>Atividade:</label>
@@ -65,79 +76,13 @@ const Calculate: NextPage = () => {
             })}
           </select>
           {activity === 'electricity' ? (
-            <>
-              <label htmlFor='electricity_value'>Consumo {'(em kwh)'}:</label>
-              <input type='number' id='electricity_value' />
-            </>
+            <Electricity />
           ) : activity === 'flight' ? (
-            <>
-              <label htmlFor='passengers'>Passageiros</label>
-              <input type='number' id='passengers' />
-              <label htmlFor='departure_airport'>Aeroporto de saída:</label>
-              <input type='text' id='departure_airport' />
-              <label htmlFor='destination_airport'>Aeroporto de chegada:</label>
-              <input type='text' id='destination_airport' />
-            </>
+            <Flight />
           ) : activity === 'shipping' ? (
-            <>
-              <label htmlFor='weight_value'>
-                Peso da mercadoria {'(em kg)'}:
-              </label>
-              <input type='number' id='weight_value' />
-              <label htmlFor='distance_unit'>Distância {'(em km)'}</label>
-              <input type='number' id='distance_unit' />
-              <fieldset
-                onChange={() => {
-                  console.log('oi')
-                }}
-              >
-                <legend>Meio de transporte:</legend>
-                <div>
-                  <input
-                    type='radio'
-                    id='ship'
-                    name='transport_method'
-                    value='ship'
-                  />
-                  <label htmlFor='ship'>Marítmo</label>
-                </div>
-                <div>
-                  <input
-                    type='radio'
-                    id='train'
-                    name='transport_method'
-                    value='train'
-                  />
-                  <label htmlFor='train'>Ferroviário</label>
-                </div>
-                <div>
-                  <input
-                    type='radio'
-                    id='truck'
-                    name='transport_method'
-                    value='truck'
-                  />
-                  <label htmlFor='truck'>Rodoviário</label>
-                </div>
-                <div>
-                  <input
-                    type='radio'
-                    id='plane'
-                    name='transport_method'
-                    value='plane'
-                  />
-                  <label htmlFor='plane'>Aéreo</label>
-                </div>
-              </fieldset>
-            </>
+            <Shipping />
           ) : activity === 'vehicle' ? (
-            <>
-              <label htmlFor='distance_value'>
-                Distância percorrida {'(em km)'}
-              </label>
-              <input type='number' id='distance_value' />
-              <p>Vehicle makes request</p>
-            </>
+            <Vehicle />
           ) : null}
           {activity && <button className='btnPrimary'>Calcular</button>}
         </form>
