@@ -138,22 +138,26 @@ export const Shipping = () => {
 }
 
 export const Vehicle = () => {
-  const { eletricityValue, setEletricityValue } = useGlobalContext()
+  const { vehicleDistance, setVehicleDistance } = useGlobalContext()
 
-  const elValue = useRef<HTMLInputElement | null>(null)
+  const distance = useRef<HTMLInputElement | null>(null)
 
   const handleChange = () => {
-    const value = elValue.current?.value
+    const value = distance.current?.value
     if (value) {
-      setEletricityValue(value)
+      setVehicleDistance(value)
     }
   }
 
   return (
     <>
       <label htmlFor='distance_value'>Distância percorrida {'(em km)'}</label>
-      <input type='number' id='distance_value' />
-      <p>Vehicle makes request</p>
+      <input
+        type='number'
+        id='distance_value'
+        ref={distance}
+        onChange={handleChange}
+      />
     </>
   )
 }

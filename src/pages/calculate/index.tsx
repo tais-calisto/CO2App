@@ -12,7 +12,8 @@ const Calculate: NextPage = () => {
   const selection = useRef<null | HTMLSelectElement>(null)
   const [activity, setActivity] = useState<string | undefined>('')
 
-  const { eletricityValue, flightInfo, shippingInfo } = useGlobalContext()
+  const { eletricityValue, flightInfo, shippingInfo, vehicleDistance } =
+    useGlobalContext()
 
   const handleChange = () => {
     setActivity(selection.current?.value)
@@ -66,6 +67,14 @@ const Calculate: NextPage = () => {
                   distance_value: shippingInfo.distance,
                   distance_unit: 'km',
                   transport_method: shippingInfo.method,
+                })
+                break
+              case 'vehicle':
+                handleSubmit({
+                  type: 'vehicle',
+                  distance_unit: 'km',
+                  distance_value: vehicleDistance,
+                  vehicle_model_id: '7268a9b7-17e8-4c8d-acca-57059252afe9',
                 })
                 break
             }

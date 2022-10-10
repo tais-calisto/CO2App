@@ -23,6 +23,8 @@ type activitiesContextType = {
   setFlightInfo: (value: flight) => void
   shippingInfo: shipping
   setShippingInfo: (value: shipping) => void
+  vehicleDistance: string
+  setVehicleDistance: (value: string) => void
 }
 
 const activitiesContextDefaultValues: activitiesContextType = {
@@ -39,6 +41,8 @@ const activitiesContextDefaultValues: activitiesContextType = {
     method: '',
   },
   setShippingInfo: () => {},
+  vehicleDistance: '',
+  setVehicleDistance: () => {},
 }
 
 export const AppContext = createContext<activitiesContextType>(
@@ -64,6 +68,7 @@ export function AppProvider({ children }: Props) {
     distance: '',
     method: '',
   })
+  const [vehicleDistance, setVehicleDistance] = useState<string>('')
 
   const value = {
     eletricityValue,
@@ -72,6 +77,8 @@ export function AppProvider({ children }: Props) {
     setFlightInfo,
     shippingInfo,
     setShippingInfo,
+    vehicleDistance,
+    setVehicleDistance,
   }
 
   return (
