@@ -9,6 +9,6 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const data = await getEstimate()
+  const data = await getEstimate(req.body)
   res.status(200).json(data)
 }

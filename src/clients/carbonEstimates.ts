@@ -1,19 +1,23 @@
 import { defaultEndpoint } from '@/utils/apiEndpoint'
 
-export const getEstimate = async () => {
+type body = {
+  type: string
+  distance_unit: string
+  distance_value: number
+  vehicle_model_id: string
+}
+
+export const getEstimate = async (info: body) => {
   try {
+    console.log(info)
+
     const res = await fetch(defaultEndpoint, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        type: 'vehicle',
-        distance_unit: 'mi',
-        distance_value: 100,
-        vehicle_model_id: '7268a9b7-17e8-4c8d-acca-57059252afe9',
-      }),
+      body: JSON.stringify(info),
     })
     const data = res.json()
     return data

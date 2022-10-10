@@ -17,7 +17,16 @@ const Calculate: NextPage = () => {
   const handleSubmit = async () => {
     try {
       const response = await fetch('http://localhost:3000/api/estimates', {
-        method: 'GET',
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          type: 'vehicle',
+          distance_unit: 'mi',
+          distance_value: 100,
+          vehicle_model_id: '7268a9b7-17e8-4c8d-acca-57059252afe9',
+        }),
       })
       const data = await response.json()
       console.log(data)
