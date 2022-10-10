@@ -18,7 +18,8 @@ export const CalculateStyle = styled.main`
     label {
       padding: 0.5rem 0 0 0;
     }
-    input {
+    input,
+    #method {
       margin-bottom: 0.5rem;
     }
     select,

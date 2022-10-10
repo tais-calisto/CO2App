@@ -10,11 +10,19 @@ type flight = {
   ]
 }
 
+type shipping = {
+  weight: string | undefined
+  distance: string | undefined
+  method: string | undefined
+}
+
 type activitiesContextType = {
   eletricityValue: string
   setEletricityValue: (value: string) => void
   flightInfo: flight
   setFlightInfo: (value: flight) => void
+  shippingInfo: shipping
+  setShippingInfo: (value: shipping) => void
 }
 
 const activitiesContextDefaultValues: activitiesContextType = {
@@ -25,6 +33,12 @@ const activitiesContextDefaultValues: activitiesContextType = {
     legs: [{ departure_airport: 'sfo', destination_airport: 'yyz' }],
   },
   setFlightInfo: () => {},
+  shippingInfo: {
+    weight: '',
+    distance: '',
+    method: '',
+  },
+  setShippingInfo: () => {},
 }
 
 export const AppContext = createContext<activitiesContextType>(
@@ -45,12 +59,19 @@ export function AppProvider({ children }: Props) {
     passengers: '',
     legs: [{ departure_airport: '', destination_airport: '' }],
   })
+  const [shippingInfo, setShippingInfo] = useState<shipping>({
+    weight: '',
+    distance: '',
+    method: '',
+  })
 
   const value = {
     eletricityValue,
     setEletricityValue,
     flightInfo,
     setFlightInfo,
+    shippingInfo,
+    setShippingInfo,
   }
 
   return (

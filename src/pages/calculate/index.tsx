@@ -12,7 +12,7 @@ const Calculate: NextPage = () => {
   const selection = useRef<null | HTMLSelectElement>(null)
   const [activity, setActivity] = useState<string | undefined>('')
 
-  const { eletricityValue, flightInfo } = useGlobalContext()
+  const { eletricityValue, flightInfo, shippingInfo } = useGlobalContext()
 
   const handleChange = () => {
     setActivity(selection.current?.value)
@@ -56,6 +56,16 @@ const Calculate: NextPage = () => {
                   type: 'flight',
                   passengers: flightInfo.passengers,
                   legs: flightInfo.legs,
+                })
+                break
+              case 'shipping':
+                handleSubmit({
+                  type: 'shipping',
+                  weight_value: shippingInfo.weight,
+                  weight_unit: 'g',
+                  distance_value: shippingInfo.distance,
+                  distance_unit: 'km',
+                  transport_method: shippingInfo.method,
                 })
                 break
             }

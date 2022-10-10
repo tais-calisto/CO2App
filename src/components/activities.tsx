@@ -1,9 +1,9 @@
 import { useRef } from 'react'
 import { useGlobalContext } from '@/context/AppContext'
-import { log } from 'console'
+import { options } from '@/utils/transportationMethods'
 
 export const Electricity = () => {
-  const { eletricityValue, setEletricityValue } = useGlobalContext()
+  const { setEletricityValue } = useGlobalContext()
 
   const elValue = useRef<HTMLInputElement | null>(null)
 
@@ -28,7 +28,7 @@ export const Electricity = () => {
 }
 
 export const Flight = () => {
-  const { flightInfo, setFlightInfo } = useGlobalContext()
+  const { setFlightInfo } = useGlobalContext()
 
   const passValue = useRef<HTMLInputElement | null>(null)
   const depAir = useRef<HTMLInputElement | null>(null)
@@ -76,61 +76,51 @@ export const Flight = () => {
 }
 
 export const Shipping = () => {
-  const { eletricityValue, setEletricityValue } = useGlobalContext()
+  const { shippingInfo, setShippingInfo } = useGlobalContext()
 
-  const elValue = useRef<HTMLInputElement | null>(null)
+  const weightRef = useRef<HTMLInputElement | null>(null)
+  const distanceRef = useRef<HTMLInputElement | null>(null)
+  const methodRef = useRef<HTMLSelectElement | null>(null)
 
   const handleChange = () => {
-    const value = elValue.current?.value
-    if (value) {
-      setEletricityValue(value)
+    const weight = weightRef.current?.value
+    const distance = distanceRef.current?.value
+    const method = methodRef.current?.value
+    if (weight || distance || method) {
+      setShippingInfo({
+        weight: weight,
+        distance: distance,
+        method: method,
+      })
     }
   }
 
   return (
     <>
-      <label htmlFor='weight_value'>Peso da mercadoria {'(em kg)'}:</label>
-      <input type='number' id='weight_value' />
+      <label htmlFor='weight_value'>Peso da mercadoria {'(em g)'}:</label>
+      <input
+        type='number'
+        id='weight_value'
+        ref={weightRef}
+        onChange={handleChange}
+      />
       <label htmlFor='distance_unit'>Distância {'(em km)'}</label>
-      <input type='number' id='distance_unit' />
-      <fieldset
-        onChange={() => {
-          console.log('oi')
-        }}
-      >
-        <legend>Meio de transporte:</legend>
-        <div>
-          <input type='radio' id='ship' name='transport_method' value='ship' />
-          <label htmlFor='ship'>Marítmo</label>
-        </div>
-        <div>
-          <input
-            type='radio'
-            id='train'
-            name='transport_method'
-            value='train'
-          />
-          <label htmlFor='train'>Ferroviário</label>
-        </div>
-        <div>
-          <input
-            type='radio'
-            id='truck'
-            name='transport_method'
-            value='truck'
-          />
-          <label htmlFor='truck'>Rodoviário</label>
-        </div>
-        <div>
-          <input
-            type='radio'
-            id='plane'
-            name='transport_method'
-            value='plane'
-          />
-          <label htmlFor='plane'>Aéreo</label>
-        </div>
-      </fieldset>
+      <input
+        type='number'
+        id='distance_unit'
+        ref={distanceRef}
+        onChange={handleChange}
+      />
+      <label htmlFor='method'>Meio de transporte:</label>
+      <select id='method' ref={methodRef} onChange={handleChange}>
+        {options.map((op) => {
+          return (
+            <option value={op.value} key={op.id}>
+              {op.name}
+            </option>
+          )
+        })}
+      </select>
     </>
   )
 }
