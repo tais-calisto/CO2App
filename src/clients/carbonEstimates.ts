@@ -9,8 +9,6 @@ type body = {
 
 export const getEstimate = async (info: body) => {
   try {
-    console.log(info)
-
     const res = await fetch(defaultEndpoint, {
       method: 'POST',
       headers: {

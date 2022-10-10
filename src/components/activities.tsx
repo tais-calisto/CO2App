@@ -138,7 +138,7 @@ export const Shipping = () => {
 }
 
 export const Vehicle = () => {
-  const { vehicleDistance, setVehicleDistance } = useGlobalContext()
+  const { setVehicleDistance } = useGlobalContext()
 
   const distance = useRef<HTMLInputElement | null>(null)
 

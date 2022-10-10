@@ -29,7 +29,7 @@ const Calculate: NextPage = () => {
         body: JSON.stringify(info),
       })
       const data = await response.json()
-      console.log(data)
+      console.log(data.data.attributes.carbon_kg)
     } catch (error) {
       console.log(error)
     }
