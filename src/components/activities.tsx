@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { useGlobalContext } from '@/context/AppContext'
+import { log } from 'console'
 
 export const Electricity = () => {
   const { eletricityValue, setEletricityValue } = useGlobalContext()
@@ -27,25 +28,49 @@ export const Electricity = () => {
 }
 
 export const Flight = () => {
-  const { eletricityValue, setEletricityValue } = useGlobalContext()
+  const { flightInfo, setFlightInfo } = useGlobalContext()
 
-  const elValue = useRef<HTMLInputElement | null>(null)
+  const passValue = useRef<HTMLInputElement | null>(null)
+  const depAir = useRef<HTMLInputElement | null>(null)
+  const desAir = useRef<HTMLInputElement | null>(null)
 
   const handleChange = () => {
-    const value = elValue.current?.value
-    if (value) {
-      setEletricityValue(value)
+    const passengers = passValue.current?.value
+    const departure = depAir.current?.value
+    const destination = desAir.current?.value
+    if (passengers || departure || destination) {
+      setFlightInfo({
+        passengers: passengers,
+        legs: [
+          { departure_airport: departure, destination_airport: destination },
+        ],
+      })
     }
   }
 
   return (
     <>
       <label htmlFor='passengers'>Passageiros</label>
-      <input type='number' id='passengers' />
+      <input
+        type='number'
+        id='passengers'
+        ref={passValue}
+        onChange={handleChange}
+      />
       <label htmlFor='departure_airport'>Aeroporto de saída:</label>
-      <input type='text' id='departure_airport' />
+      <input
+        type='text'
+        id='departure_airport'
+        ref={depAir}
+        onChange={handleChange}
+      />
       <label htmlFor='destination_airport'>Aeroporto de chegada:</label>
-      <input type='text' id='destination_airport' />
+      <input
+        type='text'
+        id='destination_airport'
+        ref={desAir}
+        onChange={handleChange}
+      />
     </>
   )
 }
