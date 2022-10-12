@@ -17,5 +17,5 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  rules: {},
+  rules: { '@typescript-eslint/explicit-module-boundary-types': 'off' },
 }
