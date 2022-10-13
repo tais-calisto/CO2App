@@ -7,14 +7,21 @@ import { options } from '@/utils/estimationOptions'
 import { useRef, useState } from 'react'
 import { Electricity, Flight, Shipping, Vehicle } from '@/components/activities'
 import { useGlobalContext } from '@/context/AppContext'
+import { useRouter } from 'next/router'
 
 const Calculate: NextPage = () => {
   const selection = useRef<null | HTMLSelectElement>(null)
   const [activity, setActivity] = useState<string | undefined>('')
-  const [result, setResult] = useState<number>()
 
-  const { eletricityValue, flightInfo, shippingInfo, vehicleDistance } =
-    useGlobalContext()
+  const router = useRouter()
+
+  const {
+    eletricityValue,
+    flightInfo,
+    shippingInfo,
+    vehicleDistance,
+    setResult,
+  } = useGlobalContext()
 
   const handleChange = () => {
     setActivity(selection.current?.value)
@@ -29,7 +36,16 @@ const Calculate: NextPage = () => {
       body: JSON.stringify(info),
     })
       .then((response) => response.json())
-      .then((data: number) => setResult(data))
+      .then((data: number) => {
+        setResult(data)
+        {
+          /*eslint-disable @typescript-eslint/no-floating-promises*/
+        }
+        router.push('/result')
+        {
+          /*eslint-enable @typescript-eslint/no-floating-promises*/
+        }
+      })
       .catch((error) => console.log(error))
   }
 

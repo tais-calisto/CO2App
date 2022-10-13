@@ -17,6 +17,8 @@ type shipping = {
 }
 
 type activitiesContextType = {
+  result: number | undefined
+  setResult: (value: number) => void
   eletricityValue: string
   setEletricityValue: (value: string) => void
   flightInfo: flight
@@ -28,6 +30,10 @@ type activitiesContextType = {
 }
 
 const activitiesContextDefaultValues: activitiesContextType = {
+  result: 0,
+  setResult: () => {
+    return
+  },
   eletricityValue: '',
   setEletricityValue: () => {
     return
@@ -66,6 +72,7 @@ type Props = {
 }
 
 export function AppProvider({ children }: Props) {
+  const [result, setResult] = useState<number>()
   const [eletricityValue, setEletricityValue] = useState<string>('')
   const [flightInfo, setFlightInfo] = useState<flight>({
     passengers: '',
@@ -79,6 +86,8 @@ export function AppProvider({ children }: Props) {
   const [vehicleDistance, setVehicleDistance] = useState<string>('')
 
   const value = {
+    result,
+    setResult,
     eletricityValue,
     setEletricityValue,
     flightInfo,
