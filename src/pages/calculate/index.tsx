@@ -11,6 +11,7 @@ import { useGlobalContext } from '@/context/AppContext'
 const Calculate: NextPage = () => {
   const selection = useRef<null | HTMLSelectElement>(null)
   const [activity, setActivity] = useState<string | undefined>('')
+  const [result, setResult] = useState<number>()
 
   const { eletricityValue, flightInfo, shippingInfo, vehicleDistance } =
     useGlobalContext()
@@ -28,7 +29,7 @@ const Calculate: NextPage = () => {
       body: JSON.stringify(info),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data))
+      .then((data: number) => setResult(data))
       .catch((error) => console.log(error))
   }
 

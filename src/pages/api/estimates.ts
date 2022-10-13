@@ -1,6 +1,18 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { defaultEndpoint } from '@/utils/apiEndpoint'
 
+export interface Carbon {
+  data: Data
+}
+export interface Data {
+  id: string
+  type: string
+  attributes: Attributes
+}
+export interface Attributes {
+  carbon_kg: number
+}
+
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const apiKey = process.env.NEXT_PUBLIC_API_KEY
 
@@ -14,9 +26,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       body: JSON.stringify(req.body),
     })
       .then((response) => response.json())
-      .then((data) => {
-        console.log(data)
-        res.status(200).json(data)
+      .then((data: Carbon) => {
+        res.status(200).json(data.data.attributes.carbon_kg)
       })
       .catch((error) => console.log(error))
   }
