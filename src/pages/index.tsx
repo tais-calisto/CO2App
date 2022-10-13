@@ -30,7 +30,8 @@ const Home: NextPage = () => {
           </Link>
         </div>
       </div>
-      <Image src={photo} />
+      {/*eslint-disable-next-line @typescript-eslint/no-unsafe-assignment*/}
+      <Image src={photo} alt='Vegetação' />
     </HomeStyle>
   )
 }

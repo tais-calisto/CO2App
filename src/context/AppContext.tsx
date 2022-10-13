@@ -29,20 +29,28 @@ type activitiesContextType = {
 
 const activitiesContextDefaultValues: activitiesContextType = {
   eletricityValue: '',
-  setEletricityValue: () => {},
+  setEletricityValue: () => {
+    return
+  },
   flightInfo: {
     passengers: '',
     legs: [{ departure_airport: 'sfo', destination_airport: 'yyz' }],
   },
-  setFlightInfo: () => {},
+  setFlightInfo: () => {
+    return
+  },
   shippingInfo: {
     weight: '',
     distance: '',
     method: '',
   },
-  setShippingInfo: () => {},
+  setShippingInfo: () => {
+    return
+  },
   vehicleDistance: '',
-  setVehicleDistance: () => {},
+  setVehicleDistance: () => {
+    return
+  },
 }
 
 export const AppContext = createContext<activitiesContextType>(

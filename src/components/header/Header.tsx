@@ -7,7 +7,8 @@ const Header = () => {
   return (
     <HeaderStyle>
       <div className='logo'>
-        <Image src={logo} />
+        {/*eslint-disable-next-line @typescript-eslint/no-unsafe-assignment*/}
+        <Image src={logo} alt='C02App Logo' />
         <h4>CO2App</h4>
       </div>
       <div className='links'>

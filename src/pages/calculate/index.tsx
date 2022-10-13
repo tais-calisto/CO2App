@@ -19,20 +19,17 @@ const Calculate: NextPage = () => {
     setActivity(selection.current?.value)
   }
 
-  const handleSubmit = async (info: object) => {
-    try {
-      const response = await fetch('http://localhost:3000/api/estimates', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(info),
-      })
-      const data = await response.json()
-      console.log(data.data.attributes.carbon_kg)
-    } catch (error) {
-      console.log(error)
-    }
+  const handleSubmit = (info: object) => {
+    fetch('http://localhost:3000/api/estimates', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(info),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.log(error))
   }
 
   return (
@@ -110,7 +107,8 @@ const Calculate: NextPage = () => {
           {activity && <button className='btnPrimary'>Calcular</button>}
         </form>
       </div>
-      <Image src={photo} />
+      {/*eslint-disable-next-line @typescript-eslint/no-unsafe-assignment*/}
+      <Image src={photo} alt='Vegetação' />
     </CalculateStyle>
   )
 }
