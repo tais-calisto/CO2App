@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint --dir src",
     "test": "jest",
-    "test:ci": "jest --coverage --silent --ci --passWithNoTests",
+    "test:ci": "jest --coverage --silent --ci",
     "prepare": "husky install",
     "lint-staged": "lint-staged"
   },
@@ -16,7 +16,6 @@
     "@fontsource/pt-serif": "^4.5.10",
     "@fontsource/ultra": "^4.5.6",
     "@next/eslint-plugin-next": "^12.3.1",
-    "@prisma/client": "^4.4.0",
     "framer-motion": "^7.5.1",
     "next": "12.3.1",
     "react": "18.2.0",
@@ -45,7 +44,6 @@
     "jest": "^29.1.2",
     "jest-environment-jsdom": "^29.1.2",
     "lint-staged": "^13.0.3",
-    "prisma": "^4.4.0",
     "ts-jest": "^29.0.3",
     "typescript": "^4.8.4"
   },
