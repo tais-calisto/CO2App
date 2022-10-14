@@ -1,34 +1,50 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# CO2App
 
-## Getting Started
+## Descrição do projeto
 
-First, run the development server:
+Projeto desenvolvido para permitir o cálculo de emissões de carbono por diferentes atividades, de forma a conscientizar quanto ao seu impacto ambiental.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Status
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Em andamento
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Tabela de Conteúdos
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+- [Sobre](#sobre)
+- [Como executar o projeto](#-como-executar-o-projeto)
+  - [Pré-requisitos](#pré-requisitos)
+  - [Rodando a aplicação](#rodando-a-aplicação)
+- [Tecnologias](#tecnologias)
+- [Autora](#autora)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Sobre
 
-## Learn More
+Projeto desenvolvido com Next.JS e com a API [CarbonInterface](https://docs.carboninterface.com/#/). Atualmente implementando teste com [Jest](https://jestjs.io/), [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) e [EsLint](https://eslint.org/)
 
-To learn more about Next.js, take a look at the following resources:
+## Como executar o projeto
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Pré-requisitos
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/).
+Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
 
-## Deploy on Vercel
+### Rodando a aplicação
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Clone este repositório
+2. Acesse a pasta do projeto no terminal
+3. Instale as dependências com `npm install`
+4. Execute a aplicação com `npm run dev`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Tecnologias
+
+As seguintes ferramentas foram usadas na construção do projeto:
+
+- [Next](https://nextjs.org/)
+- [Typescript](https://www.typescriptlang.org/)
+- [Styled Components](https://styled-components.com/)
+
+## Autora
+
+Feito com ❤️ por Taís Calisto 👋🏽 Entre em contato!
+[Linkedin](https://www.linkedin.com/in/ta%C3%ADs-calisto-43725a134/)
