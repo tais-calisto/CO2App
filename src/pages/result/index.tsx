@@ -2,7 +2,7 @@ import { NextPage } from 'next'
 import { useGlobalContext } from '@/context/AppContext'
 import Header from '@/components/header/Header'
 
-const Info: NextPage = () => {
+const Result: NextPage = () => {
   const { result } = useGlobalContext()
   return (
     <>
@@ -13,4 +13,4 @@ const Info: NextPage = () => {
   )
 }
 
-export default Info
+export default Result

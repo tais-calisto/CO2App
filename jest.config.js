@@ -16,4 +16,11 @@ module.exports = {
       statements: -10,
     },
   },
+  moduleNameMapper: {
+    '@/(.*)': '<rootDir>/src/$1',
+  },
+  transform: {
+    '^.+\\.tsx?$': '<rootDir>/node_modules/ts-jest/preprocessor.js',
+    '^.+\\.svg$': '<rootDir>/svgTransform.js',
+  },
 }
