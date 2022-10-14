@@ -19,7 +19,7 @@ Em andamento
 
 ## Sobre
 
-Projeto desenvolvido com Next.JS e com a API [CarbonInterface](https://docs.carboninterface.com/#/). Atualmente implementando teste com [Jest](https://jestjs.io/), [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) e [EsLint](https://eslint.org/)
+Projeto desenvolvido com Next.JS e com a API [Carbon Interface](https://docs.carboninterface.com/#/). Atualmente implementando testes com [Jest](https://jestjs.io/), [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) e [EsLint](https://eslint.org/)
 
 ## Como executar o projeto
 
