@@ -40,12 +40,21 @@ export const GlobalStyle = createGlobalStyle`
   .btnPrimary {
       background:linear-gradient(92.22deg, #465442 -10.98%, #6D8367 139.85%);
       color: ${({ theme }) => theme.colors.primary1};
+
     }
 
     .btnSecundary {
       background-color: transparent;
       border: 2px solid ${({ theme }) => theme.colors.gray2};
       color:  ${({ theme }) => theme.colors.gray2};
+ 
+    }
+
+    .btnPrimary, .btnSecundary{
+      transition: all 0.2s linear;
+      &:hover{
+        scale: 1.02;
+      }
     }
 
     input::-webkit-outer-spin-button,
@@ -58,14 +67,4 @@ export const GlobalStyle = createGlobalStyle`
   -moz-appearance: textfield;
   }
 
-  a{
-    font-size: 0.8rem;
-    color: ${({ theme }) => theme.colors.gray2};
-    text-decoration: underline;
-    transition: all 0.3s ease-in-out;
-    &:hover{
-      color: ${({ theme }) => theme.colors.gray3};
-
-    }
-  }
 `

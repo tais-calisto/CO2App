@@ -35,5 +35,14 @@ export const CalculateStyle = styled.main`
     button {
       width: fit-content;
     }
+    .code-search {
+      font-size: 0.8rem;
+      color: ${({ theme }) => theme.colors.gray2};
+      text-decoration: underline;
+      transition: all 0.3s ease-in-out;
+      &:hover {
+        color: ${({ theme }) => theme.colors.gray3};
+      }
+    }
   }
 `
