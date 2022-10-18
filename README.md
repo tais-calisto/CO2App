@@ -6,7 +6,7 @@ Projeto desenvolvido para permitir o cálculo de emissões de carbono por difere
 
 ## Status
 
-Em andamento
+Em andamento, disponível para visualização em: <a href="https://carbon-tais-calisto.vercel.app/" target="_blank"> CO2App </a>
 
 ## Tabela de Conteúdos
 
