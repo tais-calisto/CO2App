@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Header from '@/components/header/Header'
 import photo from '@/assets/photos/home.svg'
-import { HomeStyle } from './style'
+import { HomeStyle } from '../styles/homeStyle'
 
 const Home: NextPage = () => {
   return (
