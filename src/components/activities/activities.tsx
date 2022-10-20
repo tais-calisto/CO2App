@@ -1,9 +1,10 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { useGlobalContext } from '@/context/AppContext'
 import { options } from '@/utils/transportationMethods'
 
 export const Electricity = () => {
-  const { setEletricityValue } = useGlobalContext()
+  const { setEletricityValue, eletricityValue } = useGlobalContext()
+  const [invalid, setInvalid] = useState(false)
 
   const elValue = useRef<HTMLInputElement | null>(null)
 
@@ -11,6 +12,16 @@ export const Electricity = () => {
     const value = elValue.current?.value
     if (value) {
       setEletricityValue(value)
+      setInvalid(false)
+    }
+  }
+
+  const handleBlur = () => {
+    const value = elValue.current?.value
+    if (!value) {
+      setInvalid(true)
+    } else {
+      setInvalid(false)
     }
   }
 
@@ -22,7 +33,12 @@ export const Electricity = () => {
         id='electricity_value'
         ref={elValue}
         onChange={handleChange}
+        onBlur={handleBlur}
+        className={invalid ? 'invalid' : undefined}
       />
+      {invalid ? (
+        <p className='error'>Preencha corretamente todos os campos</p>
+      ) : null}
     </>
   )
 }

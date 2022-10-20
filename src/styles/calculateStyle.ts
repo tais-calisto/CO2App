@@ -44,5 +44,13 @@ export const CalculateStyle = styled.main`
         color: ${({ theme }) => theme.colors.gray3};
       }
     }
+    .invalid {
+      background-color: ${({ theme }) => theme.colors.accent};
+    }
+    .error {
+      color: ${({ theme }) => theme.colors.gray3};
+      font-size: 0.8rem;
+      margin-bottom: 0.5rem;
+    }
   }
 `
