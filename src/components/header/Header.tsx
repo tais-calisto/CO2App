@@ -13,7 +13,6 @@ const Header = () => {
       </div>
       <div className='links'>
         <Link href={'/calculate'}>Calculadora</Link>
-        <Link href={'/info'}>Saiba mais</Link>
       </div>
     </HeaderStyle>
   )
