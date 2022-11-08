@@ -14,7 +14,6 @@ const Result: NextPage = () => {
         <section>
           <h1>Resultado:</h1>
           <h3>A estimativa de emissão de carbono é de {result} kg</h3>
-          <button className='btnPrimary'>Saiba mais</button>
         </section>
       </div>
       {/*eslint-disable-next-line @typescript-eslint/no-unsafe-assignment*/}
