@@ -1,19 +1,19 @@
-import { options } from '@/utils/estimationOptions'
-import { useRef, useState } from 'react'
+import { options } from '@/utils/estimationOptions';
+import { useRef, useState } from 'react';
 import {
   Electricity,
   Flight,
   Shipping,
   Vehicle,
-} from '@/components/activities/activities'
-import { useGlobalContext } from '@/context/AppContext'
-import { useRouter } from 'next/router'
+} from '@/components/activities/activities';
+import { useGlobalContext } from '@/context/AppContext';
+import { useRouter } from 'next/router';
 
 const Form = () => {
-  const selection = useRef<null | HTMLSelectElement>(null)
-  const [activity, setActivity] = useState<string | undefined>('')
+  const selection = useRef<null | HTMLSelectElement>(null);
+  const [activity, setActivity] = useState<string | undefined>('');
 
-  const router = useRouter()
+  const router = useRouter();
 
   const {
     eletricityValue,
@@ -21,13 +21,15 @@ const Form = () => {
     shippingInfo,
     vehicleDistance,
     setResult,
-  } = useGlobalContext()
+  } = useGlobalContext();
 
   const handleChange = () => {
-    setActivity(selection.current?.value)
-  }
+    setActivity(selection.current?.value);
+  };
 
   const handleSubmit = (info: object) => {
+    console.log(info);
+
     fetch('http://localhost:3000/api/estimates', {
       method: 'POST',
       headers: {
@@ -37,21 +39,22 @@ const Form = () => {
     })
       .then((response) => response.json())
       .then((data: number) => {
-        setResult(data)
+        setResult(data);
+
         {
           /*eslint-disable @typescript-eslint/no-floating-promises*/
         }
-        router.push('/result')
+        router.push('/result');
         {
           /*eslint-enable @typescript-eslint/no-floating-promises*/
         }
       })
-      .catch((error) => console.log(error))
-  }
+      .catch((error) => console.log(error));
+  };
   return (
     <form
       onSubmit={(event) => {
-        event.preventDefault()
+        event.preventDefault();
         switch (activity) {
           case 'electricity':
             handleSubmit({
@@ -59,15 +62,15 @@ const Form = () => {
               electricity_unit: 'kwh',
               electricity_value: eletricityValue,
               country: 'us',
-            })
-            break
+            });
+            break;
           case 'flight':
             handleSubmit({
               type: 'flight',
               passengers: flightInfo.passengers,
               legs: flightInfo.legs,
-            })
-            break
+            });
+            break;
           case 'shipping':
             handleSubmit({
               type: 'shipping',
@@ -76,16 +79,16 @@ const Form = () => {
               distance_value: shippingInfo.distance,
               distance_unit: 'km',
               transport_method: shippingInfo.method,
-            })
-            break
+            });
+            break;
           case 'vehicle':
             handleSubmit({
               type: 'vehicle',
               distance_unit: 'km',
               distance_value: vehicleDistance,
               vehicle_model_id: '7268a9b7-17e8-4c8d-acca-57059252afe9',
-            })
-            break
+            });
+            break;
         }
       }}
     >
@@ -104,7 +107,7 @@ const Form = () => {
             <option value={op.value} key={op.id}>
               {op.name}
             </option>
-          )
+          );
         })}
       </select>
       {activity === 'electricity' ? (
@@ -118,7 +121,7 @@ const Form = () => {
       ) : null}
       {activity && <button className='btnPrimary'>Calcular</button>}
     </form>
-  )
-}
+  );
+};
 
-export default Form
+export default Form;
