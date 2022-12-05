@@ -16,12 +16,10 @@ export interface Attributes {
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   /*eslint-disable @typescript-eslint/restrict-template-expressions*/
 
-  const apiKey = process.env.NEXT_PUBLIC_API_KEY;
-
   fetch(defaultEndpoint, {
     method: 'POST',
     headers: {
-      Authorization: `Bearer ${apiKey}`,
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`,
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(req.body),
