@@ -30,7 +30,7 @@ const Form = () => {
   const handleSubmit = (info: object) => {
     console.log(info);
 
-    fetch('http://localhost:3000/api/estimates', {
+    fetch('api/estimates', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
